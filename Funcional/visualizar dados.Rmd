@@ -11,3 +11,9 @@ tr8 <- read.csv("traits_tr8.csv", h=T, ",")
 library(rmarkdown)
 paged_table(tr8)
 ```
+
+#extraida direto do TRY
+```{r}
+try <- read.csv("extraidos_direto_try.csv", h=T, ";")
+paged_table(try)
+```
