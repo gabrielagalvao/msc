@@ -14,11 +14,11 @@ comunidade <- cast(data = data, formula =
                    fun.aggregate = sum)
 
 write.csv(comunidade, "comunidade.csv")
-
+names(comunidade)
 #TR8####
 names(available_tr8)
 
-my_species <- comunidade[,2]
+my_species <- comunidade[,1]
 my_species<-str_replace(my_species, "_", " ")
 my_traits<- c("h_max","h_min","le_area","seed_wght","propag",
               "dispersal","leaf_dmc","leaf_mass","leaf_size", "dispersal_morphology","life_span",
