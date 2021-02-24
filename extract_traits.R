@@ -1,20 +1,24 @@
 #EXTRAINDO TRAITS DE PLANTAS#
 
-#TR8####
-install.packages("TR8",dependencies = TRUE)
+#pkt
+library(reshape)
 library(TR8)
-install.packages("stringr")
 library(stringr)
 
-#funcional
+#dados cmm####
+data <- read.csv("tudojunto.csv", h=T, ";")
+names(data)
 
-#data####
+comunidade <- cast(data = data, formula =
+                     nmc ~ area, value = "n_ind", fill = 0,
+                   fun.aggregate = sum)
+
+write.csv(comunidade, "comunidade.csv")
+
+#TR8####
 names(available_tr8)
-write.csv(available_tr8, "traitscode.csv")
-cmm <- read.csv("comunidade.csv", h=T, sep=",")
-names(cmm)
 
-my_species <- cmm[,2]
+my_species <- comunidade[,2]
 my_species<-str_replace(my_species, "_", " ")
 my_traits<- c("h_max","h_min","le_area","seed_wght","propag",
               "dispersal","leaf_dmc","leaf_mass","leaf_size", "dispersal_morphology","life_span",
