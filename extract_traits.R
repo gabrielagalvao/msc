@@ -6,6 +6,8 @@ library(TR8)
 install.packages("stringr")
 library(stringr)
 
+#funcional
+
 #data####
 names(available_tr8)
 write.csv(available_tr8, "traitscode.csv")
