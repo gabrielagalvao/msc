@@ -16,16 +16,16 @@ library(rphast)####<<<<<<<<<<<<<<<<<<<<<<<<<
 source("howManyPolytomies.R")
 source("whichNodesArePolytomies.R")
 
-phylotree<-read.newick(file="ALLMB.tre") #funcao do pacote phytools que l? filogenias com SINGLETONS
+phylotree<-read.newick(file="ALLMB.tre") #funcao do pacote phytools que lê filogenias com SINGLETONS
 
 phylotree$Nnode
 
-#nome nos n?s
+#nome nos nós
 phylotree2<-makeNodeLabel(phylotree,prefix="n")
 phylotree2$node.label
 
-# ?s vezes, ao manipular a ?rvore, as idades dos n?s s?o apagadas. Sempre bom salv?-las em um arquivo separado para inser?-las novamente, se necess?rio!
-branching.times(phylotree2)#idades dos n?s
+# Às vezes, ao manipular a árvore, as idades dos nós são apagadas. Sempre bom salvá-las em um arquivo separado para inserí-las novamente, se necessário!
+branching.times(phylotree2)#idades dos nós
 nodeages<-branching.times(phylotree2)
 nodeages<-round(nodeages, digits=4) #arredonda para quatro digitos
 nnodeages<-cbind(nodename = names(nodeages),nodeages)
@@ -40,17 +40,14 @@ comparison$data_not_tree
 pruned.tree<-drop.tip(phylotree2,comparison$tree_not_data)
 prainserir<- pruned.tree$tip.label
 
-comparison$data_not_tree# Precisamos inserir nossas esp?cies ausentes na ?rvore
+comparison$data_not_tree# Precisamos inserir nossas espécies ausentes na árvore
 
-
-
-branching.times(pruned.tree)#idades dos n?s
+#segunda prevenção
+branching.times(pruned.tree)#idades dos nós
 nodeages<-branching.times(pruned.tree)
 nodeages<-round(nodeages, digits=4) #arredonda para quatro digitos
 nnodeages<-cbind(nodename = names(nodeages),nodeages)
 write.table(nnodeages,"ages_and_nodes_pt.txt",sep="\t",row.names=FALSE, quote=FALSE,col.names=FALSE)#pronto para ser utilizado no phylocom ou aqui mesmo no R
-
-
 
 
 write.tree(pruned.tree, "checarosnos.tre") #abre no figtree
@@ -197,7 +194,7 @@ newtree <- sub.taxa.label(inserindo38, dat)
 newtree$tip.label
 
 
-write.tree(newtree, "arvorecertinha_PRABOTARTEMPO_19_01_21.tre")
+write.tree(newtree, "tree_inserirtemponophylocom.tre")
 
 
 
