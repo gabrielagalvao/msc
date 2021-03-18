@@ -1,0 +1,170 @@
+---
+title: "Efeito da estrutura de paisagem sobre o potencial de recuperação de áreas degradadas"
+author: "Gabriela Albuquerque Galvão"
+
+institute: "Orientador: Felipe Pimentel Lopes de Melo"
+date: "Coorientador: Thiago Gonçalves-Souza"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+```{r echo=FALSE,out.extra="100%", fig.align='center'}
+knitr::include_graphics("burlando as coisa/Slide1.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide2.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide3.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide4.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide5.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide6.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide7.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide8.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide9.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide10.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide11.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide12.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide13.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide14.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide15.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide16.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide17.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide18.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide19.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide20.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide21.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide22.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide23.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide24.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide25.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide26.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide27.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide28.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide29.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide30.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide31.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide32.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide33.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide34.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide35.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide36.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide37.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide38.JPG")
+```
+---
+```{r echo=FALSE}
+knitr::include_graphics("burlando as coisa/Slide39.JPG")
+```
+
