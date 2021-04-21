@@ -1,0 +1,205 @@
+---
+title: "Mestrado"
+author: "gabi"
+date: "29/03/2021"
+output: html_document
+---
+```{r include=FALSE}
+library(ape)
+library(phytools)
+library(geiger)
+library(phylotools)
+library(adephylo)
+library(Hmisc)
+source("howManyPolytomies.R")
+source("whichNodesArePolytomies.R")
+```
+
+> Construindo a árvore filogenética
+
+
+Megatree publicada em [Smith & Brown 2018](https://bsapubs.onlinelibrary.wiley.com/doi/full/10.1002/ajb2.1019) 
+
+`phylotree<-read.newick(file="ALLMB.tre") #funcao do pacote phytools que lê filogenias com SINGLETONS`
+
+```{r include=FALSE}
+phylotree<-read.newick(file="ALLMB.tre") #funcao do pacote phytools que lê filogenias com SINGLETONS
+
+phylotree$Nnode
+```
+
+```{r echo=TRUE}
+#nome nos nós
+phylotree2<-makeNodeLabel(phylotree,prefix="n")
+
+```
+
+Às vezes, ao manipular a árvore, as idades dos nós são apagadas. Sempre bom salvá-las em um arquivo separado para inserí-las novamente, se necessário!
+
+`branching.times(phylotree2)#idades dos nós`
+```{r echo=TRUE}
+nodeages<-branching.times(phylotree2)
+nodeages<-round(nodeages, digits=4) #arredonda para quatro digitos
+nnodeages<-cbind(nodename = names(nodeages),nodeages)
+write.table(nnodeages,"ages_and_nodes.txt",sep="\t",row.names=FALSE, quote=FALSE,col.names=FALSE)# pronto para ser utilizado no phylocom ou aqui mesmo no R
+```
+
+minhas espécies
+```{r}
+my.species <- read.csv("nomesp.csv", ";", h=F)
+```
+
+```{r}
+comparison<-name.check(phylotree2,my.species,data.names=my.species[,1])# Essa fun??o mostra quais esp?cies da ?rvore n?o est?o na lista e vice-versa
+
+comparison$data_not_tree
+```
+Remover espécies indesejadas da árvore
+```{r}
+pruned.tree<-drop.tip(phylotree2,comparison$tree_not_data)
+prainserir<- pruned.tree$tip.label#preparar pra inserir as especies
+```
+```{r include=FALSE}
+#segunda prevenção
+branching.times(pruned.tree)#idades dos nós
+nodeages<-branching.times(pruned.tree)
+nodeages<-round(nodeages, digits=4) #arredonda para quatro digitos
+nnodeages<-cbind(nodename = names(nodeages),nodeages)
+write.table(nnodeages,"ages_and_nodes_pt.txt",sep="\t",row.names=FALSE, quote=FALSE,col.names=FALSE)#pronto para ser utilizado no phylocom ou aqui mesmo no R
+
+```
+
+Nesse ponto eu preciso abrir a árvore no FigTree e notar em que nós eu irei inserir as espécies faltantes.
+```{r}
+write.tree(pruned.tree, "checarosnos.tre")
+```
+Inserir todas as espécies manualmente:
+```{r}
+inserindo <- pruned.tree#vou mudar o nome de tds pra voltar facil se der merda
+
+onde <- which(c(inserindo$tip.label,inserindo$node.label)=="n22633")
+inserindo2<-bind.tip(inserindo,"Ammannia_sp",where=onde,position=0)
+
+onde2 <- which(c(inserindo2$tip.label,inserindo2$node.label)=="n68481")
+inserindo3<-bind.tip(inserindo2,"Cyperus_sp1",where=onde2,position=0)
+
+onde3 <- which(c(inserindo3$tip.label,inserindo3$node.label)=="n68481")
+inserindo4<-bind.tip(inserindo3,"Cyperus_sp2",where=onde3,position=0)
+
+onde3 <- which(c(inserindo3$tip.label,inserindo3$node.label)=="n68481")
+inserindo4<-bind.tip(inserindo3,"Cyperus_sp2",where=onde3,position=0)
+
+onde4 <- which(c(inserindo4$tip.label,inserindo4$node.label)=="n68481")
+inserindo5<-bind.tip(inserindo4,"Cyperus_sp3",where=onde4,position=0)
+
+onde5 <- which(c(inserindo5$tip.label,inserindo5$node.label)=="n68481")
+inserindo6 <-bind.tip(inserindo5,"Cyperus_sp4",where=onde5,position=0)
+
+onde6 <- which(c(inserindo6$tip.label,inserindo6$node.label)=="n68481")
+inserindo7<-bind.tip(inserindo6,"Cyperus_sp5",where=onde6,position=0)
+
+onde7 <- which(c(inserindo7$tip.label,inserindo7$node.label)=="n68481")
+inserindo8<-bind.tip(inserindo7,"Cyperus_sp6",where=onde7,position=0)
+
+onde8 <- which(c(inserindo8$tip.label,inserindo8$node.label)=="n68481")
+inserindo9<-bind.tip(inserindo8,"Cyperus_sp7",where=onde8,position=0)
+
+onde9 <- which(c(inserindo9$tip.label,inserindo9$node.label)=="n68481")
+inserindo10<-bind.tip(inserindo9,"Cyperus_sp8",where=onde9,position=0)
+
+onde10 <- which(c(inserindo10$tip.label,inserindo10$node.label)=="n68481")
+inserindo11<-bind.tip(inserindo10,"Cyperus_sp9",where=onde10,position=0)
+
+onde11 <- which(c(inserindo11$tip.label,inserindo11$node.label)=="n68481")
+inserindo12<-bind.tip(inserindo11,"Cyperus_sp10",where=onde11,position=0)
+
+
+onde12 <- which(c(inserindo12$tip.label,inserindo12$node.label)=="n65150")
+inserindo13<-bind.tip(inserindo12,"Eragrostis_cf_maypurensis",where=onde12,position=0)
+
+onde13 <- which(c(inserindo13$tip.label,inserindo13$node.label)=="n65150")
+inserindo14<-bind.tip(inserindo13,"Eragrostis_sp1",where=onde13,position=0)
+
+onde14 <- which(c(inserindo14$tip.label,inserindo14$node.label)=="n65150")
+inserindo15<-bind.tip(inserindo14,"Eragrostis_sp2",where=onde14,position=0)
+
+onde15 <- which(c(inserindo15$tip.label,inserindo15$node.label)=="n65150")
+inserindo16<-bind.tip(inserindo15,"Eragrostis_sp3",where=onde15,position=0)
+
+onde16 <- which(c(inserindo16$tip.label,inserindo16$node.label)=="n36915")
+inserindo17<-bind.tip(inserindo16,"Evolvulus_sp",where=onde16,position=0)
+
+onde17 <- which(c(inserindo17$tip.label,inserindo17$node.label)=="n22690")
+inserindo18<-bind.tip(inserindo17,"Ludwigia_sp",where=onde17,position=0)
+
+onde18 <- which(c(inserindo18$tip.label,inserindo18$node.label)=="n22690")
+inserindo19<-bind.tip(inserindo18,"Ludwigia_sp1",where=onde18,position=0)
+
+onde19 <- which(c(inserindo19$tip.label,inserindo19$node.label)=="n32543")
+inserindo20<-bind.tip(inserindo19,"Mitracarpus_sp1",where=onde19,position=0)
+
+onde20 <- which(c(inserindo20$tip.label,inserindo20$node.label)=="n55237")
+inserindo21<-bind.tip(inserindo20,"Portulaca_sp",where=onde20,position=0)
+
+onde21 <- which(c(inserindo21$tip.label,inserindo21$node.label)=="n55237")
+inserindo22<-bind.tip(inserindo21,"Portulaca_sp1",where=onde21,position=0)
+
+onde22 <- which(c(inserindo22$tip.label,inserindo22$node.label)=="n55237")
+inserindo23<-bind.tip(inserindo22,"Portulaca_sp2",where=onde22,position=0)
+
+onde23 <- which(c(inserindo23$tip.label,inserindo23$node.label)=="n35816")
+inserindo24<-bind.tip(inserindo23,"Schwenckia_angustifolia",where=onde23,position=0)
+
+onde24 <- which(c(inserindo24$tip.label,inserindo24$node.label)=="n67988")
+inserindo25<-bind.tip(inserindo24,"Scleria_sp1", where=onde24 , position=0)
+
+onde25 <- which(c(inserindo25$tip.label,inserindo25$node.label)=="n67988")
+inserindo26<-bind.tip(inserindo25,"Scleria_sp2",where=onde25,position=0)
+
+onde26<- which(c(inserindo26$tip.label,inserindo26$node.label)=="n67988")
+inserindo27<-bind.tip(inserindo26,"Scleria_sp3",where=onde26,position=0)
+
+onde27<- which(c(inserindo27$tip.label,inserindo27$node.label)=="n17941")
+inserindo28<-bind.tip(inserindo27,"Sida_sp",where=onde27,position=0)
+
+onde28<- which(c(inserindo28$tip.label,inserindo28$node.label)=="n10171")
+inserindo29<-bind.tip(inserindo28,"Stylosanthes_sp",where=onde28,position=0)
+
+onde29<- which(c(inserindo29$tip.label,inserindo29$node.label)=="n15119")
+inserindo30<-bind.tip(inserindo29,"Tarenaya_sp",where=onde29,position=0)
+
+onde30<- which(c(inserindo30$tip.label,inserindo30$node.label)=="n17559")
+inserindo31<-bind.tip(inserindo30,"Waltheria_sp",where=onde30,position=0)
+
+onde31<- which(c(inserindo31$tip.label,inserindo30$node.label)=="n37106")
+inserindo32<-bind.tip(inserindo31,"Asteraceae_1",where=onde31,position=0)
+
+onde32<- which(c(inserindo32$tip.label,inserindo32$node.label)=="n67988")
+inserindo33<-bind.tip(inserindo32,"Cyperaceae_sp1",where=onde32,position=0)
+
+onde33<- which(c(inserindo33$tip.label,inserindo33$node.label)=="n67988")
+inserindo34<-bind.tip(inserindo33,"Cyperaceae_sp2",where=onde33,position=0)
+
+onde34<- which(c(inserindo34$tip.label,inserindo34$node.label)=="n64772")
+inserindo35<-bind.tip(inserindo34,"Poaceae_sp1",where=onde34,position=0)
+
+onde35<- which(c(inserindo35$tip.label,inserindo35$node.label)=="n64772")
+inserindo36<-bind.tip(inserindo35,"Poaceae_sp2",where=onde35,position=0)
+
+onde36<- which(c(inserindo36$tip.label,inserindo36$node.label)=="n64772")
+inserindo37<-bind.tip(inserindo36,"Poaceae_sp3",where=onde36,position=0)
+
+onde37<- which(c(inserindo37$tip.label,inserindo37$node.label)=="n32116")
+inserindo38<-bind.tip(inserindo37,"Rubiaceae_sp1",where=onde37,position=0)
+
+```
+
+
+
+
+
+
+
+
+
+
